@@ -1,0 +1,43 @@
+﻿@model List<QuickStartWepUI.Dtos.Services.ResultServicesDto>
+
+@{
+    ViewData["Title"] = "Services";
+}
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container mt-4">
+
+    <h2 class="mb-4">Hizmetler</h2>
+
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>#</th>
+                <th>Hizmet</th>
+                <th>Açıklama</th>
+                <th>Icon</th>
+                <th>Sil</th>
+                <th>Güncelle</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.serviceId</td>
+                    <td>@item.title</td>
+                    <td>@item.description</td>
+                    <td>@item.iconUrl</td>
+                    <td>
+                        <a href="#" class="btn btn-danger btn-sm">Sil</a>
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-success btn-sm">Güncelle</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>

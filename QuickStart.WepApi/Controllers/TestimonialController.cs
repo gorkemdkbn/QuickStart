@@ -7,52 +7,52 @@ namespace QuickStart.WepApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ServiceController : ControllerBase
+    public class TestimonialController : ControllerBase
     {
         private readonly QuickStartContext _context;
 
-        public ServiceController(QuickStartContext context)
+
+        public TestimonialController(QuickStartContext context)
         {
             _context = context;
 
         }
-
         [HttpGet]
-        public IActionResult ServiceList()
+
+        public IActionResult GetAll()
         {
-            var value = _context.services.ToList();
+            var value = _context.testimonials.ToList();
             return Ok(value);
         }
         [HttpPost]
-        public IActionResult CreateService(Service service)
+        public IActionResult CreateTestimonial(Testimonial testimonial)
         {
-            _context.services.Add(service);
+            _context.testimonials.Add(testimonial);
             _context.SaveChanges();
             return Ok("Ekleme İşlemi Başarılı");
         }
-
         [HttpPut]
 
-        public IActionResult UpdateService(Service service)
+        public IActionResult UpdateTestimonial(Testimonial testimonial)
         {
-            
-           _context.services.Update(service);
+
+            _context.testimonials.Update(testimonial);
             _context.SaveChanges();
             return Ok("Güncelle İşlemi Gerçekleşti");
 
         }
 
         [HttpDelete]
-        public IActionResult DeleteService(int id) 
+        public IActionResult DeleteTestimonial(int id)
         {
-           var value = _context.services.Find(id);
+            var value = _context.testimonials.Find(id);
 
-            if (value == null) 
+            if (value == null)
             {
                 return NotFound("Kayıt Bulunumadı");
-            
+
             }
-            _context.services.Remove(value);
+            _context.testimonials.Remove(value);
             _context.SaveChanges();
             return Ok("Başarıyla Silindi");
         }
